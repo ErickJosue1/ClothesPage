@@ -44,6 +44,8 @@ class ProductsController extends Controller
         ]);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +53,12 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("Products/API/ProductForm", [
+            'titulo'      => 'Crea un nuevo producto!', 
+            'routeName'      => $this->routeName,
+            'loadingResults' => false
+        ]);
+        
     }
 
     /**

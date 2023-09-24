@@ -12,7 +12,7 @@ const logout = () => {
     <!-- Header -->
 
     <div class="navbar bg-base-200">
-        <div class="navbar-start md:px-20">
+        <div class="navbar-start md:mx-20">
             <!-- Left dropdown -->
             <div class="dropdown">
                 <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const logout = () => {
             </div>
             <!-- Left Info -->
             <div class="hidden lg:flex">
-                <a :href="route('products.index')"
+                <a 
                     class="h-10 grow flex flex-row card bg-secondary-content hover:bg-opacity-100 bg-opacity-80 rounded-full py-2 text-white px-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -52,14 +52,14 @@ const logout = () => {
 
         <!-- Logo and menu-->
         <div class="navbar-center flex flex-col">
-            <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <a class="btn btn-ghost normal-case text-xl">Clothes Page</a>
 
             <ul class="menu menu-horizontal px-1 hidden lg:flex">
                 <li tabindex="0">
                     <details>
                         <summary>Hombre</summary>
                         <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
+                            <li><a :href="route('products.index')" >Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
                         </ul>
                     </details>
@@ -76,15 +76,6 @@ const logout = () => {
                 <li tabindex="0">
                     <details>
                         <summary>Niños</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-                <li tabindex="0">
-                    <details>
-                        <summary>Calzado</summary>
                         <ul class="p-2">
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
@@ -166,7 +157,7 @@ const logout = () => {
                         <!--             <span class="badge">New</span>
  --> </a>
                 </li>
-                <li><button :on-click="logout()">Cerrar Sesion</button></li>
+                <li><button @click="logout()">Cerrar Sesion</button></li>
             </ul>
         </div>
 
@@ -215,7 +206,7 @@ const logout = () => {
     <slot />
 
     <!-- Footer -->
-    <footer class="footer mt-10 p-10 bg-base-200 text-base-content">
+    <footer class="footer p-10 bg-base-200 text-base-content">
         <nav>
             <header class="footer-title">Services</header>
             <a class="link link-hover">Branding</a>
@@ -237,7 +228,7 @@ const logout = () => {
             <a class="link link-hover">Cookie policy</a>
         </nav>
     </footer>
-    <footer class="footer px-10 py-4 border-t bg-base-100 text-base-content border-base-300">
+    <footer class="footer px-10 py-4 border-t bg-base-300 text-base-content border-base-300">
         <aside class="items-center grid-flow-col">
             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
                 clip-rule="evenodd" class="fill-current">

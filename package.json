@@ -17,5 +17,12 @@
         "tailwindcss": "^3.2.1",
         "vite": "^4.0.0",
         "vue": "^3.2.41"
+    },
+    "dependencies": {
+        "@zakerxa/vue-multiple-image-upload": "^1.0.8",
+        "sortablejs": "^1.15.0",
+        "sortablejs-vue3": "^1.2.9",
+        "vue-media-upload": "^2.1.2",
+        "vue-upload-multiple-image": "^1.1.6"
     }
 }

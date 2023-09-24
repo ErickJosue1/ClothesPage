@@ -1,31 +1,32 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import LoginLayout from '@/Layouts/LoginLayout.vue';
+import RegisterLayout from '@/Layouts/RegisterLayout.vue';
+import { ref } from 'vue';
 
-defineProps({
+const props = defineProps({
     canResetPassword: Boolean,
     status: String,
     isLogin: { type: Boolean, default: true },
-    isRegister: {type: Boolean, default: false},
-
+    isRegister: { type: Boolean, default: false },
 });
 
-const form = useForm({
-    email: '',
-    password: '',
-    remember: false,
-});
 
-const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
-};
+const canLogin = ref(props.isLogin);
+const canRegister = ref(props.isRegister);
+
+
+const onLogIn = () => {
+    canLogin.value = true;
+    canRegister.value = false;
+}
+
+const onRegister = () => {
+    canLogin.value = false;
+    canRegister.value = true;
+}
+
 </script>
 
 <template>
@@ -33,57 +34,9 @@ const submit = () => {
 
         <Head title="Incio de Sesion" />
 
-        <div class="flex flex-col w-full lg:flex-row border-y-2">
-            <div class="grid flex-grow h-full w-full rounded-box place-items-center">
-                <div class="hero min-h-screen">
-                    <div class="hero-content text-center ">
-                        <div class="max-w-md">
-                            <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-                            <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-                                exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button class="btn btn-primary">Registrarse</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="divider lg:divider-horizontal">OR</div>
-            <div class="grid flex-grow h-full w-full card bg-base rounded-box place-items-center">
-                <div class="hero min-h-screen">
-                    <div class="hero-content flex-col lg:flex-row-reverse">
-                        <div class="text-center lg:text-left">
-                            <h1 class="text-5xl font-bold">Login now!</h1>
-                            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-                                exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        </div>
-                        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                            <div class="card-body">
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Email</span>
-                                    </label>
-                                    <input type="text" placeholder="email" class="input input-bordered" />
-                                </div>
-                                <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Password</span>
-                                    </label>
-                                    <input type="text" placeholder="password" class="input input-bordered" />
-                                    <label class="label">
-                                        <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-                                    </label>
-                                </div>
-                                <div class="form-control mt-6">
-                                    <button class="btn btn-primary">Login</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-
-
+        <LoginLayout v-if="canLogin" @onRegisterRequest="onRegister()"></LoginLayout>
+        <RegisterLayout v-if="canRegister" @onLoginRequest="onLogIn()"></RegisterLayout>
 
         <!--   <form @submit.prevent="submit">
             <div>
