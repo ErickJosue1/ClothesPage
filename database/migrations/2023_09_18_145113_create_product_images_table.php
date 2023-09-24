@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->string('url', 255);
             $table->string('mime', 55);
             $table->integer('size');
-            $table->integer('position')->nullable();
             $table->timestamps();
         });
 
@@ -32,7 +31,6 @@ return new class extends Migration {
                         'url' => $p->image,
                         'mime' => $p->image_mime,
                         'size' => $p->image_size,
-                        'position' => 1,
                         'created_at' => \Carbon\Carbon::now(),
                         'updated_at' => \Carbon\Carbon::now()
                     ];

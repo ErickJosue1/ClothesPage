@@ -15,7 +15,7 @@ class ProductsController extends Controller
     private products $model;
 
 
-    
+
     public function __construct()
     {
         //$this->middleware('auth');
@@ -33,14 +33,25 @@ class ProductsController extends Controller
         $records = $this->model;
         $records = $records->when($request->search, function ($query, $search) {
             if ($search != '') {
-                $query->where('name',          'LIKE', "%$search%");
+                if ($search->category != 'Todo') {
+                    if (!$search->genre != 'Todo') {
+                        $query
+                            ->where('category',       'LIKE', "%$search->category%")
+                            ->where('genre',          'LIKE', "%$search->genre%");
+                    } else {
+                        $query
+                            ->where('genre',          'LIKE', "%$search->genre%");
+                    }
+                }
             }
-        })->paginate(5)->withQueryString();
+        })->orderBy('updated_at', 'desc')->paginate(10)->withQueryString();
+
 
         return Inertia::render("Products/Index", [
-            'titulo'      => 'Productos', 
+            'titulo'      => 'Productos',
             'routeName'      => $this->routeName,
-            'loadingResults' => false
+            'loadingResults' => false,
+            'products'       => $records
         ]);
     }
 
@@ -54,11 +65,10 @@ class ProductsController extends Controller
     public function create()
     {
         return Inertia::render("Products/API/ProductForm", [
-            'titulo'      => 'Crea un nuevo producto!', 
+            'titulo'      => 'Crea un nuevo producto!',
             'routeName'      => $this->routeName,
             'loadingResults' => false
         ]);
-        
     }
 
     /**

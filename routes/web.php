@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\CarItemsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +31,16 @@ Route::get('/', function () {
 Route::resource('shopping-cart', CarItemsController::class)->names('shopping-cart');
 Route::resource('products', ProductsController::class)->names('products');
 
+Route::get('/product/{product:slug}', [ProductController::class, 'view'])->name('product.view');
+
+Route::prefix('/cart')->name('cart.')->group(function () {
+    Route::get('/', [CarItemsController::class, 'index'])->name('index');
+    Route::post('/add/{product:slug}', [CarItemsController::class, 'add'])->name('add');
+    Route::post('/remove/{product:slug}', [CarItemsController::class, 'remove'])->name('remove');
+    Route::post('/update-quantity/{product:slug}', [CarItemsController::class, 'updateQuantity'])->name('update-quantity');
+});
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -38,9 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
-
 });
 
 require __DIR__ . '/auth.php';
