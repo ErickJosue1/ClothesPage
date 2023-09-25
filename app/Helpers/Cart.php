@@ -25,7 +25,7 @@ class Cart
 
             return array_reduce(
                 $cartItems,
-                fn($carry, $item) => $carry + $item['quantity'],
+                fn ($carry, $item) => $carry + $item['quantity'],
                 0
             );
         }
@@ -37,7 +37,7 @@ class Cart
         $user = $request->user();
         if ($user) {
             return car_items::where('user_id', $user->id)->get()->map(
-                fn($item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
+                fn ($item) => ['product_id' => $item->product_id, 'quantity' => $item->quantity]
             );
         } else {
             return self::getCookieCartItems();
@@ -54,7 +54,7 @@ class Cart
     {
         return array_reduce(
             $cartItems,
-            fn($carry, $item) => $carry + $item['quantity'],
+            fn ($carry, $item) => $carry + $item['quantity'],
             0
         );
     }
@@ -92,7 +92,8 @@ class Cart
         $ids = Arr::pluck($cartItems, 'product_id');
         $products = car_items::query()->whereIn('id', $ids)->get();
         $cartItems = Arr::keyBy($cartItems, 'product_id');
+        $productsInfo = products::query()->whereIn('id', $ids)->get();
 
-        return [$products, $cartItems];
+        return [$products, $cartItems, $productsInfo];
     }
 }

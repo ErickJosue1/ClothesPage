@@ -33,8 +33,10 @@ Route::resource('products', ProductsController::class)->names('products');
 
 Route::get('/product/{product:slug}', [ProductController::class, 'view'])->name('product.view');
 
+
 Route::prefix('/cart')->name('cart.')->group(function () {
     Route::get('/', [CarItemsController::class, 'index'])->name('index');
+    Route::get('/get', [CarItemsController::class, 'getCarItems'])->name('getCarItems');
     Route::post('/add/{product:slug}', [CarItemsController::class, 'add'])->name('add');
     Route::post('/remove/{product:slug}', [CarItemsController::class, 'remove'])->name('remove');
     Route::post('/update-quantity/{product:slug}', [CarItemsController::class, 'updateQuantity'])->name('update-quantity');

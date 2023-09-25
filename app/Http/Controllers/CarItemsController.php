@@ -35,17 +35,28 @@ class CarItemsController extends Controller
     public function index()
     {
 
-        [$products, $cartItems] = Cart::getProductsAndCartItems();
+        [$products, $cartItems, $productsInfo] = Cart::getProductsAndCartItems();
         $total = 0;
         foreach ($products as $product) {
             $total += $product->price * $cartItems[$product->id]['quantity'];
         }
 
+     
+        
+
         return Inertia::render("ShoppingCart/Index", [
             'titulo'      => 'Carrito',
             'routeName'      => $this->routeName,
-            'loadingResults' => false
+            'loadingResults' => false,
+            'products' => $productsInfo,
+            'cartItems' => $cartItems,
+            'total' => $total
         ]);
+    }
+
+    public function getCarItems()
+    {
+        return Cart::getCartItemsCount();
     }
 
     public function add(Request $request, products $product)

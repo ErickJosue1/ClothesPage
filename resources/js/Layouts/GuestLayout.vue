@@ -2,10 +2,30 @@
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
+import { ref } from 'vue';
+import { onMounted } from 'vue';
+import { themeChange } from 'theme-change'
+
 
 const logout = () => {
     axios.post(route('logout'));
 }
+
+const getCount = () => {
+    axios.get(route('cart.getCarItems')).then((response) => {
+        count.value = response.data
+
+    })
+};
+
+const count = ref(0)
+
+onMounted(() => {
+    getCount();
+    themeChange(false)
+
+});
+
 </script>
 
 <template>
@@ -35,7 +55,7 @@ const logout = () => {
             </div>
             <!-- Left Info -->
             <div class="hidden lg:flex">
-                <a 
+                <a
                     class="h-10 grow flex flex-row card bg-primary  hover:bg-opacity-100 bg-opacity-80 rounded-full py-2 text-white px-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -59,7 +79,7 @@ const logout = () => {
                     <details>
                         <summary>Hombre</summary>
                         <ul class="p-2">
-                            <li><a :href="route('products.index')" >Submenu 1</a></li>
+                            <li><a :href="route('products.index')">Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
                         </ul>
                     </details>
@@ -110,7 +130,8 @@ const logout = () => {
             <label class="swap swap-rotate btn-ghost btn-circle">
 
                 <!-- this hidden checkbox controls the state -->
-                <input type="checkbox" class="hidden" />
+                <input data-toggle-theme="autumn,coffe" data-act-class="ACTIVECLASS" type="checkbox" class="hidden" />
+
 
                 <!-- sun icon -->
                 <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -136,7 +157,7 @@ const logout = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    <span class="badge badge-sm ndicator-item">8</span>
+                    <span class="badge badge-sm ndicator-item">{{ count }}</span>
                 </div>
             </a>
 

@@ -18,13 +18,11 @@ defineProps({
       <div class="hero-overlay bg-opacity-60"></div>
       <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
-          <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+          <h1 class="mb-5 text-5xl font-bold">Donde la moda se encuentra con la comodidad</h1>
           <p class="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-            id nisi.
+            La moda es una expresión, vívela con nosotros
           </p>
-          <button class="btn btn-primary">Get Started</button>
+          <button class="btn btn-primary">Empecemos</button>
         </div>
       </div>
     </div>
@@ -155,12 +153,12 @@ defineProps({
           style="background-image: url('https://images.unsplash.com/photo-1577655197620-704858b270ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=144')">
           <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
             <div class="px-10 max-w-xl">
-              <h2 class="text-2xl text-white font-semibold">Sport Shoes</h2>
+              <h2 class="text-2xl text-white font-semibold">Zapatos deportivos</h2>
               <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere
                 provident molestias ipsam sint voluptatum pariatur.</p>
               <button
                 class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                <span>Shop Now</span>
+                <span>Compra Ahora</span>
                 <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -174,12 +172,12 @@ defineProps({
             style="background-image: url('https://images.unsplash.com/photo-1547949003-9792a18a2601?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
             <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
               <div class="px-10 max-w-xl">
-                <h2 class="text-2xl text-white font-semibold">Back Pack</h2>
+                <h2 class="text-2xl text-white font-semibold">Mochilas</h2>
                 <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere
                   provident molestias ipsam sint voluptatum pariatur.</p>
                 <button
                   class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                  <span>Shop Now</span>
+                  <span>Compra Ahora</span>
                   <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -192,12 +190,12 @@ defineProps({
             style="background-image: url('https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
             <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
               <div class="px-10 max-w-xl">
-                <h2 class="text-2xl text-white font-semibold">Games</h2>
+                <h2 class="text-2xl text-white font-semibold">Camisas y Jeans</h2>
                 <p class="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere
                   provident molestias ipsam sint voluptatum pariatur.</p>
                 <button
                   class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                  <span>Shop Now</span>
+                  <span>Compra ahora</span>
                   <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -208,7 +206,7 @@ defineProps({
           </div>
         </div>
         <div class="mt-16">
-          <h3 class="text-gray-600 text-2xl font-medium">Fashions</h3>
+          <h3 class="text-gray-600 text-2xl font-medium">A la Moda</h3>
           <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
               <div class="flex items-end justify-end h-56 w-full bg-cover"
@@ -285,7 +283,7 @@ defineProps({
           </div>
         </div>
         <div class="mt-16">
-          <h3 class="text-gray-600 text-2xl font-medium">Fashions</h3>
+          <h3 class="text-gray-600 text-2xl font-medium">Para Ella</h3>
           <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
               <div class="flex items-end justify-end h-56 w-full bg-cover"

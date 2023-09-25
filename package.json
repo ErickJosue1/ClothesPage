@@ -22,6 +22,7 @@
         "@zakerxa/vue-multiple-image-upload": "^1.0.8",
         "sortablejs": "^1.15.0",
         "sortablejs-vue3": "^1.2.9",
+        "theme-change": "^2.5.0",
         "vue-media-upload": "^2.1.2",
         "vue-upload-multiple-image": "^1.1.6"
     }
