@@ -20,7 +20,7 @@
 
             {{ totalPrice }}
 
-            <div v-for="product in products">
+            <div v-for="product in products" :key="product">
               <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                 <div class="md:w-4/12 2xl:w-1/4 w-full">
                   <img src="https://i.ibb.co/SX762kX/Rectangle-36-1.png" alt="Black Leather Bag"
@@ -44,7 +44,8 @@
                   <div class="flex items-center justify-between pt-5">
                     <div class="flex itemms-center">
                       <p class="text-xs leading-3 underline cursor-pointer">Add to favorites</p>
-                      <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                      <p @click="remove(product)" class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
+                        Remove</p>
                     </div>
                     <p class="text-base font-black leading-none">${{ product.price }}</p>
                   </div>
@@ -157,6 +158,7 @@
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { ref } from "vue";
+import axios from 'axios';
 
 export default {
   name: "component",
@@ -164,6 +166,11 @@ export default {
     products: { type: Object, required: true },
     cartItems: { type: Object, required: true },
     total: { type: Number, required: true },
+  },
+  methods: {
+    remove(product){
+      axios.post(route('cart.remove', product))
+    }
   },
   data() {
     return {
@@ -183,12 +190,12 @@ export default {
     });
 
     const finalPrice = ref(totalPrice.value + 100 + 25)
-    
+
     totalPrice.value = parseFloat(totalPrice.value).toFixed(2)
     finalPrice.value = parseFloat(finalPrice.value).toFixed(2)
 
 
-   
+
 
     return { totalPrice, finalPrice };
   },

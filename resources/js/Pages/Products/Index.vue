@@ -116,10 +116,10 @@
 
                         <div class="join grid grid-cols-2 py-12">
                             <a :href="products.links[0]['url'] ? products.links[0]['url'] : ''"
-                                class="join-item btn btn-outline">Previous
+                                class="join-item btn btn-outline">Anterior
                                 page</a>
                             <a :href="products.links[products.links.length - 1]['url']"
-                                class="join-item btn btn-outline">Next</a>
+                                class="join-item btn btn-outline">Siguiente</a>
                         </div>
                     </div>
                 </div>

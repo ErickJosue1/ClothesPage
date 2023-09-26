@@ -77,7 +77,7 @@ onMounted(() => {
             <ul class="menu menu-horizontal px-1 hidden lg:flex">
                 <li tabindex="0">
                     <details>
-                        <summary>Hombre</summary>
+                        <summary>Camisas</summary>
                         <ul class="p-2">
                             <li><a :href="route('products.index')">Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
@@ -86,7 +86,7 @@ onMounted(() => {
                 </li>
                 <li tabindex="0">
                     <details>
-                        <summary>Mujer</summary>
+                        <summary>Pantalones</summary>
                         <ul class="p-2">
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
@@ -95,7 +95,7 @@ onMounted(() => {
                 </li>
                 <li tabindex="0">
                     <details>
-                        <summary>Niños</summary>
+                        <summary>Zapatos</summary>
                         <ul class="p-2">
                             <li><a>Submenu 1</a></li>
                             <li><a>Submenu 2</a></li>
@@ -167,7 +167,7 @@ onMounted(() => {
             <!-- Profile -->
             <label v-if="$page.props.auth.user" tabindex="0" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                    <img src="../../../../Pictures/anime-girl.gif" />
+                    <img src="                                                                                                                                                                                                                       " />
                 </div>
             </label>
 
