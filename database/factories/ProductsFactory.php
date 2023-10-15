@@ -14,7 +14,6 @@ class ProductsFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    private static $genre = ['Hombre', 'Mujer', 'Niños'];
     private static $category = ['Camisas', 'Pantalones', 'Calzado'];
     private static $title = ['T-shirt', 'Jeans', 'zapatos'];
 
@@ -27,9 +26,10 @@ class ProductsFactory extends Factory
         return [
             'title' => self::$title[$randomNumber] . ' ' . fake()->cityPrefix(),
             'description' => fake()->realText(100),
+            'color' => fake()->colorName(),
+            'size' =>  fake()->randomFloat(0, 2, 10),
             'price' => fake()->randomFloat(2, 100, 1200),
             'quantity' => fake()->randomFloat(2, 5, 100),
-            'genre' => self::$genre[$randomNumber],
             'category' => self::$category[fake()->randomFloat(0, 0, 2)],
             'created_at' => now(),
             'updated_at' => now(),

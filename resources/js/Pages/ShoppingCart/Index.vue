@@ -18,8 +18,6 @@
             </div>
             <p class="lg:text-4xl text-3xl font-black leading-10 py-3">Carrito</p>
 
-            {{ totalPrice }}
-
             <div v-for="product in products" :key="product">
               <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                 <div class="md:w-4/12 2xl:w-1/4 w-full">
@@ -38,14 +36,13 @@
                       <option>03</option>
                     </select>
                   </div>
-                  <p class="text-xs leading-3  pt-2">Height: 10 inches</p>
-                  <p class="text-xs leading-3  py-4">Color: Black</p>
-                  <p class="w-96 text-xs leading-3 ">Composition: 100% calf leather</p>
+                  <p class="text-xs leading-3  pt-2">Size: {{ product.size }}</p>
+                  <p class="text-xs leading-3  py-4">Color: {{ product.color }}</p>
                   <div class="flex items-center justify-between pt-5">
                     <div class="flex itemms-center">
-                      <p class="text-xs leading-3 underline cursor-pointer">Add to favorites</p>
+                      <p class="text-xs leading-3 underline cursor-pointer"> Añadir a favoritos</p>
                       <p @click="remove(product)" class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                        Remove</p>
+                        Eliminar</p>
                     </div>
                     <p class="text-base font-black leading-none">${{ product.price }}</p>
                   </div>
@@ -168,7 +165,7 @@ export default {
     total: { type: Number, required: true },
   },
   methods: {
-    remove(product){
+    remove(product) {
       axios.post(route('cart.remove', product))
     }
   },

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('title', 2000);
             $table->string('slug', 2000);
             $table->string('image', 2000)->nullable();
-            $table->string('genre')->nullable();
+            $table->string('size')->nullable();
+            $table->string('color')->nullable();
             $table->string('category')->nullable();
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
