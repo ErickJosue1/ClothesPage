@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('size')->nullable();
             $table->string('color')->nullable();
             $table->string('category')->nullable();
+            $table->string('type')->nullable();
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
             $table->longText('description')->nullable();

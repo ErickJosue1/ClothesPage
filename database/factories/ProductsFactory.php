@@ -31,6 +31,7 @@ class ProductsFactory extends Factory
             'price' => fake()->randomFloat(2, 100, 1200),
             'quantity' => fake()->randomFloat(2, 5, 100),
             'category' => self::$category[fake()->randomFloat(0, 0, 2)],
+            'type'   => fake()->word(),
             'created_at' => now(),
             'updated_at' => now(),
             'created_by' => 1,

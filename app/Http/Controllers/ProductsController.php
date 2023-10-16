@@ -33,14 +33,19 @@ class ProductsController extends Controller
         $records = $this->model;
         $records = $records->when($request->search, function ($query, $search) {
             if ($search != '') {
-                if ($search->category != 'Todo') {
-                    if (!$search->genre != 'Todo') {
+                if ($search['category'] != 'Todo') {
+                    if ($search['type'] && $search['type'] != 'Todo') {
+                        $category = $search['category'];
+                        $type = $search['type'];
+
                         $query
-                            ->where('category',       'LIKE', "%$search->category%")
-                            ->where('genre',          'LIKE', "%$search->genre%");
-                    } else {
+                            ->where('category',       'LIKE', "%$category%")
+                            ->where('type',          'LIKE', "%$type%");
+                    }
+                    else {
+                        $category = $search['category'];
                         $query
-                            ->where('genre',          'LIKE', "%$search->genre%");
+                            ->where('category',       'LIKE', "%$category%");
                     }
                 }
             }
@@ -51,7 +56,10 @@ class ProductsController extends Controller
             'titulo'      => 'Productos',
             'routeName'      => $this->routeName,
             'loadingResults' => false,
-            'products'       => $records
+            'products'       => $records,
+            'breadcrumb'     => $request->search && $request->search['category'] ? $request->search['category'] : 'Todo',
+            'breadcrumb_type'     => $request->search && $request->search['type'] && $request->search['category'] ? $request->search['type'] : 'Todo'
+
         ]);
     }
 
