@@ -49,7 +49,7 @@ class ProductsController extends Controller
                     }
                 }
             }
-        })->orderBy('updated_at', 'desc')->paginate(10)->withQueryString();
+        })->with('product_images')->orderBy('updated_at', 'desc')->paginate(10)->withQueryString();
 
 
         return Inertia::render("Products/Index", [

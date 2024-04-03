@@ -21,11 +21,14 @@ class ProductImageSeeder extends Seeder
     {
 
 
+
         for ($i = 0; $i < 20; $i++) {
+            $j = fake()->randomFloat(0, 1, 2);
+
             ProductImage::factory()->create([
                 'product_id' => self::$order++,
                 'path' =>  storage_path(),
-                'url' => fake()->imageUrl(), // Esto generará una URL de imagen falsa
+                'url' => 'Img/Product' . $j . '/P' . $j . '_1.jpg', // Esto generará una URL de imagen falsa
                 'mime' => fake()->mimeType(),
                 'size' => fake()->numberBetween(10000, 5000000),
             ]);

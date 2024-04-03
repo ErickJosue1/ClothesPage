@@ -7,6 +7,7 @@ defineProps({
   canRegister: Boolean,
   laravelVersion: String,
   phpVersion: String,
+  products: { type: Object, required: true },
 });
 </script>
 
@@ -15,14 +16,12 @@ defineProps({
   <GuestLayout>
     <!-- Content -->
 
-    <div class="hero min-h-screen" style="background-image: url('/Img/Main_bg.jpg')">
+    <div class="hero min-h-screen" style="background-image: url('/Img/BG1.jpg')">
       <div class="hero-overlay bg-opacity-60"></div>
       <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
-          <h1 class="mb-5 text-5xl font-bold">
-            Donde la moda se encuentra con la comodidad
-          </h1>
-          <p class="mb-5">La moda es una expresión, vívela con nosotros</p>
+          <h1 class="mb-5 text-5xl font-bold">Dispositivos de Diagnostico</h1>
+          <p class="mb-5">La mejor calidad en laringoscopio y otros productos</p>
           <button class="btn btn-primary">Empecemos</button>
         </div>
       </div>
@@ -31,7 +30,7 @@ defineProps({
     <div class="divider px-4 py-12">
       <a
         :href="route('products.index')"
-        class="h-10 grow flex flex-row card bg-primary hover:bg-opacity-100 bg-opacity-80 rounded-full py-2 text-white px-5"
+        class="h-10 grow flex flex-row card bg-primary text-primary-content hover:bg-opacity-100 bg-opacity-80 rounded-full py-2 text-white px-5"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +217,7 @@ defineProps({
       <a
         class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
       >
-        <span>Chechout</span>
+        <span>Checkout</span>
         <svg
           class="h-5 w-5 mx-2"
           fill="none"
@@ -233,11 +232,13 @@ defineProps({
       </a>
     </div>
 
+    
+
     <main class="my-8">
       <div class="container mx-auto px-6">
         <div class="mt-16">
-          <h3 class="text-gray-600 text-2xl font-medium flex space-x-2">
-            <span>Tendencias</span>
+          <h3 class="text-2xl font-medium flex space-x-2">
+            <span>Lo mas vendido</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -256,156 +257,33 @@ defineProps({
           <div class="carousel w-full">
             <!-- 1 -->
             <div
-              id="slide1"
+              v-for="(index, page) in products.links"
+              :key="page"
+              :id="'slide' + index"
               class="carousel-item relative w-full grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6"
             >
               <div
                 class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
               >
-                <a href="#slide2" class="btn btn-circle">❮</a>
-                <a href="#slide2" class="btn btn-circle">❯</a>
+                <a :href="products.links[0].url ? products.links[0].url: ''" class="btn btn-circle">❮</a>
+                <a :href="products.links[products.links.length - 1].url ? products.links[products.links.length - 1].url: ''" class="btn btn-circle">❯</a>
               </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-primary text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Chanel</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Man Mix</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Classic watch</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1590664863685-a99ef05e9f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=345&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">woman mix</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-            </div>
-            <!-- 2 -->
-            <div
-              id="slide2"
-              class="carousel-item relative w-full grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6"
-            >
+
+              <!-- Carrousel Content -->
+
               <div
-                class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+                v-for="(item, index) in products.data"
+                :key="index"
+                class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
               >
-                <a href="#slide1" class="btn btn-circle">❮</a>
-                <a href="#slide1" class="btn btn-circle">❯</a>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                 <div
                   class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80');
+                  :style="
+                    'background-image: url(' +  item.product_images[0].url + ')'
                   "
                 >
                   <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+                    class="p-2 rounded-full bg-primary text-primary-content mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
                   >
                     <svg
                       class="h-5 w-5"
@@ -423,230 +301,15 @@ defineProps({
                   </button>
                 </div>
                 <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Gucci</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Man Mix</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">Classic watch</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
-                </div>
-              </div>
-              <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div
-                  class="flex items-end justify-end h-56 w-full bg-cover"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1590664863685-a99ef05e9f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=345&q=80');
-                  "
-                >
-                  <button
-                    class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                  >
-                    <svg
-                      class="h-5 w-5"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div class="px-5 py-3">
-                  <h3 class="text-gray-700 uppercase">woman mix</h3>
-                  <span class="text-gray-500 mt-2">$12</span>
+                  <h3 class="uppercase">{{ item.title }}</h3>
+                  <span class="text-info mt-2">${{ item.price }}</span>
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
-        <div class="mt-16">
-          <h3 class="text-gray-600 text-2xl font-medium">Lo ultimo agregado</h3>
-          <div
-            class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6"
-          >
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-              <div
-                class="flex items-end justify-end h-56 w-full bg-cover"
-                style="
-                  background-image: url('https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=376&q=80');
-                "
-              >
-                <button
-                  class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="px-5 py-3">
-                <h3 class="text-gray-700 uppercase">Chanel</h3>
-                <span class="text-gray-500 mt-2">$12</span>
-              </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-              <div
-                class="flex items-end justify-end h-56 w-full bg-cover"
-                style="
-                  background-image: url('https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
-                "
-              >
-                <button
-                  class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="px-5 py-3">
-                <h3 class="text-gray-700 uppercase">Man Mix</h3>
-                <span class="text-gray-500 mt-2">$12</span>
-              </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-              <div
-                class="flex items-end justify-end h-56 w-full bg-cover"
-                style="
-                  background-image: url('https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
-                "
-              >
-                <button
-                  class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="px-5 py-3">
-                <h3 class="text-gray-700 uppercase">Classic watch</h3>
-                <span class="text-gray-500 mt-2">$12</span>
-              </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-              <div
-                class="flex items-end justify-end h-56 w-full bg-cover"
-                style="
-                  background-image: url('https://images.unsplash.com/photo-1590664863685-a99ef05e9f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=345&q=80');
-                "
-              >
-                <button
-                  class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-              <div class="px-5 py-3">
-                <h3 class="text-gray-700 uppercase">woman mix</h3>
-                <span class="text-gray-500 mt-2">$12</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </main>
   </GuestLayout>

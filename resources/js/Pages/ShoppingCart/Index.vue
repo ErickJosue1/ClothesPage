@@ -32,13 +32,14 @@
             </div>
             <p class="lg:text-4xl text-3xl font-black leading-10 py-3">Carrito</p>
 
+              
             <div v-for="product in products" :key="product">
               <div
                 class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50"
               >
                 <div class="md:w-4/12 2xl:w-1/4 w-full">
                   <img
-                    src="https://i.ibb.co/SX762kX/Rectangle-36-1.png"
+                    :src="product.product_images[0].url "
                     alt="Black Leather Bag"
                     class="h-full object-center object-cover md:block hidden"
                   />

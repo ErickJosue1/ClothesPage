@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\products;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,8 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-    ]);
+        'products' => products::with('product_images')->paginate(4),
+    ]); 
 })->name('public');
 
 Route::resource('shopping-cart', CarItemsController::class)->names('shopping-cart');

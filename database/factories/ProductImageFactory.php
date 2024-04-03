@@ -17,17 +17,19 @@ class ProductImageFactory extends Factory
      */
 
      private static $order = 1;
-
+     
     
 
     public function definition()
     {
 
+        $i = fake()->randomFloat(0, 1, 2);
+
         
         return [
             'product_id' => self::$order++,
             'path' => UploadedFile::fake(),
-            'url' => fake()->imageUrl(), // Esto generará una URL de imagen falsa
+            'url' => 'Img/Product' . $i . '/P' . $i . '_1.jpg', // Esto generará una URL de imagen falsa
             'mime' => fake()->mimeType,
             'size' => fake()->numberBetween(10000, 5000000),
         ];

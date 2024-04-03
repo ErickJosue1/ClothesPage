@@ -45,7 +45,7 @@ onUpdated(() => {
   <!-- Header -->
 
   <div id="navbar" class="transition-all fixed top-0 z-50 navbar bg-base-200">
-    <div class="navbar-start md:mx-20">
+    <div class="navbar-start md:mx-16">
       <!-- Left dropdown -->
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -130,57 +130,52 @@ onUpdated(() => {
 
     <!-- Logo and menu-->
     <div class="navbar-center flex flex-col">
-      <a :href="route('public')" class="btn btn-ghost normal-case text-xl"
-        >Clothes Page</a
+      <a :href="route('public')" class="btn btn-ghost text-info normal-case text-xl"
+        >Medical Page</a
       >
       <ul class="menu menu-horizontal px-1 hidden lg:flex">
         <li tabindex="0">
+          <Link
+            :href="route('products.index')"
+            method="get"
+            :data="{
+              search: {
+                category: 'Laringoscopio',
+                type: '',
+              },
+            }"
+            >Laringoscopios</Link
+          >
+        </li>
+        <li tabindex="0">
+          <Link
+            :href="route('products.index')"
+            method="get"
+            :data="{
+              search: {
+                category: 'Estetoscopio',
+                type: '',
+              },
+            }"
+            >Estetoscopios</Link
+          >
+        </li>
+        <li tabindex="0">
           <details>
-            <summary>Ropa</summary>
+            <summary>Equipo Medico</summary>
             <ul class="p-2">
-              <li>
-                <Link
-                  :href="route('products.index')"
-                  method="get"
-                  :data="{
-                    search: {
-                      category: 'Camisas',
-                      type: '',
-                    },
-                  }"
-                  >Camisas</Link
-                >
-              </li>
-              <li><a>Blusas</a></li>
+              <li><a>Otoscopio</a></li>
+              <li><a>Oftalmoscopio</a></li>
+              <li><a>Fisioterapia</a></li>
             </ul>
           </details>
         </li>
         <li tabindex="0">
           <details>
-            <summary>Jeans</summary>
+            <summary>Otros Instrumentos</summary>
             <ul class="p-2">
-              <li><a>Skinny</a></li>
-              <li><a>Straight</a></li>
-              <li><a>Girlfriend</a></li>
-            </ul>
-          </details>
-        </li>
-        <li tabindex="0">
-          <details>
-            <summary>Lenceria</summary>
-            <ul class="p-2">
-              <li><a>Panties</a></li>
-              <li><a>Tops</a></li>
-              <li><a>Bras</a></li>
-            </ul>
-          </details>
-        </li>
-        <li tabindex="0">
-          <details>
-            <summary>Deportiva</summary>
-            <ul class="p-2">
-              <li><a>Leggins</a></li>
-              <li><a>Shorts</a></li>
+              <li><a>Suplementos</a></li>
+              <li><a>Baumanometros</a></li>
             </ul>
           </details>
         </li>
@@ -189,22 +184,26 @@ onUpdated(() => {
 
     <!-- Right Buttons -->
     <div class="navbar-end">
-      <button class="btn btn-ghost btn-circle">
+      <form action="" class="relative max-md:mx-auto w-max">
+        <input
+          type="search"
+          class="peer cursor-pointer transition-all ease-in-out delay-50 relative z-10 h-12 w-12 rounded-full bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-info focus:pl-16 focus:pr-4"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent px-3.5 peer-focus:border-primary peer-focus:stroke-primary"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          stroke-width="2"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            stroke-width="2"
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
-      </button>
+      </form>
 
       <button v-if="$page.props.auth.user" class="btn btn-ghost btn-circle">
         <div class="indicator">
@@ -226,10 +225,10 @@ onUpdated(() => {
         </div>
       </button>
 
-      <label class="swap swap-rotate btn-ghost btn-circle">
+      <label class="swap swap-rotate btn-ghost btn-circle mx-4">
         <!-- this hidden checkbox controls the state -->
         <input
-          data-toggle-theme="autumn,coffe"
+          data-toggle-theme="cmyk,night"
           data-act-class="ACTIVECLASS"
           type="checkbox"
           class="hidden"
@@ -289,9 +288,7 @@ onUpdated(() => {
         class="btn btn-ghost btn-circle avatar"
       >
         <div class="w-10 rounded-full">
-          <img
-            src="                                                                                                                                                                                                                       "
-          />
+          <img src="" />
         </div>
       </label>
 

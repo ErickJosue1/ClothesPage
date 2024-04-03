@@ -10,9 +10,9 @@
               class="block font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >Todo</a
             >
-            <a href="#" class="block font-medium hover:underline">Camisas</a>
-            <a href="#" class="block font-medium hover:underline">Pantalones Formales</a>
-            <a href="#" class="block font-medium hover:underline">Jeans</a>
+            <a href="#" class="block font-medium hover:underline">Caracteristicas</a>
+            <a href="#" class="block font-medium hover:underline">Disponibilidad</a>
+            <a href="#" class="block font-medium hover:underline">Tamaño</a>
           </div>
 
           <div class="mt-6 lg:mt-0 lg:px-2 lg:w-4/5">
@@ -33,8 +33,7 @@
                 >
                   <option value="#">Cualquiera</option>
                   <option value="#">Recomendado</option>
-                  <option value="#">Talla</option>
-                  <option value="#">Precio</option>
+                 
                 </select>
               </div>
             </div>
@@ -42,14 +41,15 @@
             <div
               class="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             >
+           
               <div v-for="product in products.data" :key="product.id">
                 <div
                   class="flex flex-col items-center justify-center w-full max-w-lg mx-auto"
                 >
                   <img
                     class="object-cover w-full rounded-md h-72 xl:h-80"
-                    src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-                    alt="T-Shirt"
+                    :src="product.product_images[0].url"
+                    :alt="product.slug"
                   />
                   <h4 class="mt-2 text-lg font-medium">{{ product.title }}</h4>
                   <p class="text-blue-500">${{ product.price }}</p>

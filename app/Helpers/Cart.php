@@ -92,7 +92,7 @@ class Cart
         $ids = Arr::pluck($cartItems, 'product_id');
         $products = car_items::query()->whereIn('id', $ids)->get();
         $cartItems = Arr::keyBy($cartItems, 'product_id');
-        $productsInfo = products::query()->whereIn('id', $ids)->get();
+        $productsInfo = products::query()->whereIn('id', $ids)->with('product_images')->get();
 
         return [$products, $cartItems, $productsInfo];
     }

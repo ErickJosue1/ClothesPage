@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
 
 class products extends Model
 {
@@ -29,5 +32,10 @@ class products extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function product_images()
+    {
+        return $this->hasMany(ProductImage::class,'product_id');
     }
 }
